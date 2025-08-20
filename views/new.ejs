@@ -1,15 +1,32 @@
+
 <%- include('partials/header') %>
 
-<h1>New Task</h1>
+<h1>New Job</h1>
 
 <form action="/" method="POST">
     <div class="mb-3">
-        <label for="name" class="form-label">Name</label>
-        <input type="text" class="form-control" id="name" name="name" required>
+        <label for="title" class="form-label">Title</label>
+        <input type="text" class="form-control" id="title" name="title" required>
+    </div>
+    <div class="mb-3">
+        <label for="company" class="form-label">Company</label>
+        <input type="text" class="form-control" id="company" name="company" required>
+    </div>
+    <div class="mb-3">
+        <label for="location" class="form-label">Location</label>
+        <input type="text" class="form-control" id="location" name="location" required>
     </div>
     <div class="mb-3">
         <label for="description" class="form-label">Description</label>
-        <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+        <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+    </div>
+    <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" name="email" required>
+    </div>
+    <div class="mb-3">
+        <label for="website" class="form-label">Website</label>
+        <input type="text" class="form-control" id="website" name="website">
     </div>
     <button type="submit" class="btn btn-primary">Create</button>
     <a href="/" class="btn btn-secondary">Cancel</a>

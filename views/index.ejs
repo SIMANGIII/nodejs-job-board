@@ -2,25 +2,76 @@
 <%- include('partials/header') %>
 
 <div class="d-flex justify-content-between align-items-center mb-3">
-    <h1>Tasks</h1>
-    <a href="/new" class="btn btn-primary">New Task</a>
+    <h1>Job Listings</h1>
+    <a href="/new" class="btn btn-primary">New Job</a>
 </div>
 
-<ul class="list-group">
-    <% tasks.forEach(task => { %>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-            <div>
-                <h5><%= task.name %></h5>
-                <p><%= task.description %></p>
+<form action="/" method="GET" class="mb-4">
+    <div class="row">
+        <div class="col-md-10">
+            <input type="text" name="keyword" class="form-control" placeholder="Search by keyword (title)" value="<%= req.query.keyword || '' %>">
+        </div>
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-primary w-100">Search</button>
+        </div>
+    </div>
+</form>
+
+<div class="row" id="job-listings">
+    <% jobs.forEach(job => { %>
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"><%= job.title %></h5>
+                    <h6 class="card-subtitle mb-2 text-muted"><%= job.company %> - <%= job.location %></h6>
+                    <p class="card-text"><%= job.description.substring(0, 100) %>...</p>
+                    <a href="mailto:<%= job.email %>" class="card-link">Email</a>
+                    <a href="<%= job.website %>" class="card-link" target="_blank">Website</a>
+                    <div class="mt-2">
+                        <a href="/<%= job._id %>/edit" class="btn btn-secondary btn-sm">Edit</a>
+                        <form action="/<%= job._id %>/delete" method="POST" style="display: inline;">
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div>
-                <a href="/<%= task._id %>/edit" class="btn btn-secondary btn-sm">Edit</a>
-                <form action="/<%= task._id %>/delete" method="POST" style="display: inline;">
-                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                </form>
-            </div>
-        </li>
+        </div>
     <% }) %>
-</ul>
+</div>
+
+<% if (hasMore) { %>
+    <div class="text-center mt-4">
+        <button id="see-more-btn" class="btn btn-primary" data-loaded="<%= loaded %>" data-keyword="<%= req.query.keyword || '' %>">See More</button>
+    </div>
+<% } %>
+
+<script>
+    document.getElementById('see-more-btn').addEventListener('click', async () => {
+        const loaded = document.getElementById('see-more-btn').dataset.loaded;
+        const keyword = document.getElementById('see-more-btn').dataset.keyword;
+        
+        let url = `/?loaded=${loaded}`;
+        if (keyword) {
+            url += `&keyword=${keyword}`;
+        }
+
+        const response = await fetch(url);
+        const html = await response.text();
+
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const newJobListings = doc.getElementById('job-listings').innerHTML;
+        const newSeeMoreBtn = doc.getElementById('see-more-btn');
+
+        document.getElementById('job-listings').insertAdjacentHTML('beforeend', newJobListings);
+
+        if (newSeeMoreBtn) {
+            document.getElementById('see-more-btn').dataset.loaded = newSeeMoreBtn.dataset.loaded;
+            document.getElementById('see-more-btn').dataset.keyword = newSeeMoreBtn.dataset.keyword;
+        } else {
+            document.getElementById('see-more-btn').remove();
+        }
+    });
+</script>
 
 <%- include('partials/footer') %>
