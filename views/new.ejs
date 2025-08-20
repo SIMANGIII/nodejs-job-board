@@ -1,19 +1,23 @@
-
-<%- include('partials/header') %>
-
-<h1>New Task</h1>
-
-<form action="/" method="POST">
-    <div class="mb-3">
-        <label for="name" class="form-label">Name</label>
-        <input type="text" class="form-control" id="name" name="name" required>
-    </div>
-    <div class="mb-3">
-        <label for="description" class="form-label">Description</label>
-        <textarea class="form-control" id="description" name="description" rows="3"></textarea>
-    </div>
-    <button type="submit" class="btn btn-primary">Create</button>
-    <a href="/" class="btn btn-secondary">Cancel</a>
-</form>
-
-<%- include('partials/footer') %>
+        
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Task</title>
+</head>
+<body>
+    <h1>New Task</h1>
+    <form action="/tasks" method="POST">
+        <div>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div>
+            <label for="description">Description</label>
+            <textarea id="description" name="description"></textarea>
+        </div>
+        <button type="submit">Create</button>
+    </form>
+</body>
+</html>
