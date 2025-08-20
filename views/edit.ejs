@@ -1,0 +1,19 @@
+
+<%- include('partials/header') %>
+
+<h1>Edit Task</h1>
+
+<form action="/<%= task._id %>" method="POST">
+    <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" name="name" value="<%= task.name %>" required>
+    </div>
+    <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea class="form-control" id="description" name="description" rows="3"><%= task.description %></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+    <a href="/" class="btn btn-secondary">Cancel</a>
+</form>
+
+<%- include('partials/footer') %>
