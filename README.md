@@ -1,4 +1,4 @@
-# Job CRUD Web App
+# NodeJs job board Web App
 
 ## Setup Instructions
 
