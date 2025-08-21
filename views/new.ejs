@@ -17,13 +17,52 @@
         <input type="text" class="form-control" id="location" name="location" required>
     </div>
     <div class="mb-3">
-        <label for="description" class="form-label">Description</label>
-        <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
-    </div>
-    <div class="mb-3">
-        <label for="email" class="form-label">Email</label>
-        <input type="email" class="form-control" id="email" name="email" required>
-    </div>
+            <label for="description" class="form-label">Description</label>
+            <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Job Types</label><br>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="newAdvert" name="jobTypes" value="Advert">
+                <label class="form-check-label" for="newAdvert">Advert</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="newConsultancy" name="jobTypes" value="Consultancy">
+                <label class="form-check-label" for="newConsultancy">Consultancy</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="newContract" name="jobTypes" value="Contract">
+                <label class="form-check-label" for="newContract">Contract</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="newFullTime" name="jobTypes" value="Full Time">
+                <label class="form-check-label" for="newFullTime">Full Time</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="newInternship" name="jobTypes" value="Internship">
+                <label class="form-check-label" for="newInternship">Internship</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="newPartTime" name="jobTypes" value="Part Time">
+                <label class="form-check-label" for="newPartTime">Part Time</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="newRfpTender" name="jobTypes" value="RFP / Tender">
+                <label class="form-check-label" for="newRfpTender">RFP / Tender</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="newTemporary" name="jobTypes" value="Temporary">
+                <label class="form-check-label" for="newTemporary">Temporary</label>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="closingDate" class="form-label">Closing Date</label>
+            <input type="date" class="form-control" id="closingDate" name="closingDate">
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+        </div>
     <div class="mb-3">
         <label for="website" class="form-label">Website</label>
         <input type="text" class="form-control" id="website" name="website">

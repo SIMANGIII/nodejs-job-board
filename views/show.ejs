@@ -1,0 +1,29 @@
+<%- include('partials/header') %>
+
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header">
+            <h1><%= job.title %></h1>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title"><%= job.company %></h5>
+            <p class="card-text"><strong>Location:</strong> <%= job.location %></p>
+            <p class="card-text"><strong>Job Types:</strong> <%= job.jobTypes.join(', ') %></p>
+            <p class="card-text"><strong>Description:</strong></p>
+            <p class="card-text"><%= job.description %></p>
+            <p class="card-text"><strong>Email:</strong> <a href="mailto:<%= job.email %>"><%= job.email %></a></p>
+            <% if (job.website) { %>
+                <p class="card-text"><strong>Website:</strong> <a href="<%= job.website %>" target="_blank"><%= job.website %></a></p>
+            <% } %>
+            <% if (job.closingDate) { %>
+                <p class="card-text"><strong>Closing Date:</strong> <%= job.closingDate.toLocaleDateString() %></p>
+            <% } %>
+        </div>
+        <div class="card-footer text-muted">
+            Posted <%= job.createdAt ? job.createdAt.toLocaleDateString() : 'N/A' %>
+        </div>
+    </div>
+    <a href="/" class="btn btn-primary mt-3">Back to Jobs</a>
+</div>
+
+<%- include('partials/footer') %>

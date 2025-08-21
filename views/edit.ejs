@@ -17,17 +17,31 @@
         <input type="text" class="form-control" id="location" name="location" value="<%= job.location %>" required>
     </div>
     <div class="mb-3">
-        <label for="description" class="form-label">Description</label>
-        <textarea class="form-control" id="description" name="description" rows="3" required><%= job.description %></textarea>
-    </div>
-    <div class="mb-3">
-        <label for="email" class="form-label">Email</label>
-        <input type="email" class="form-control" id="email" name="email" value="<%= job.email %>" required>
-    </div>
-    <div class="mb-3">
-        <label for="website" class="form-label">Website</label>
-        <input type="text" class="form-control" id="website" name="website" value="<%= job.website %>">
-    </div>
+            <label for="description" class="form-label">Description</label>
+            <textarea class="form-control" id="description" name="description" rows="3" required><%= job.description %></textarea>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Job Types</label><br>
+            <% const jobTypes = ['Advert', 'Consultancy', 'Contract', 'Full Time', 'Internship', 'Part Time', 'RFP / Tender', 'Temporary']; %>
+            <% jobTypes.forEach(type => { %>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="edit<%= type.replace(/\s|\//g, '') %>" name="jobTypes" value="<%= type %>" <%= job.jobTypes && job.jobTypes.includes(type) ? 'checked' : '' %>>
+                    <label class="form-check-label" for="edit<%= type.replace(/\s|\//g, '') %>"><%= type %></label>
+                </div>
+            <% }); %>
+        </div>
+        <div class="mb-3">
+            <label for="closingDate" class="form-label">Closing Date</label>
+            <input type="date" class="form-control" id="closingDate" name="closingDate" value="<%= job.closingDate ? job.closingDate.toISOString().split('T')[0] : '' %>">
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" value="<%= job.email %>" required>
+        </div>
+        <div class="mb-3">
+            <label for="website" class="form-label">Website</label>
+            <input type="text" class="form-control" id="website" name="website" value="<%= job.website %>">
+        </div>
     <button type="submit" class="btn btn-primary">Update</button>
     <a href="/" class="btn btn-secondary">Cancel</a>
 </form>

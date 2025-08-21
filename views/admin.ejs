@@ -1,0 +1,11 @@
+<%- include('partials/header') %>
+
+<div class="container mt-4">
+    <h1>Admin</h1>
+    <a href="/new" class="btn btn-primary mb-3">New Job</a>
+    <div id="job-listings">
+        <%- include('partials/_jobs', {jobs: jobs, isAdmin: true}) %>
+    </div>
+</div>
+
+<%- include('partials/footer') %>
