@@ -1,5 +1,4 @@
-nodejs-job-board
-
+**nodejs-job-board**
 Setup Instructions
 Prerequisites
 Node.js and npm installed
@@ -18,7 +17,7 @@ Start your MongoDB server if it is not already running.
 Start the web application:
 node index.js
 Open your browser and go to http://localhost:3000
-Usage
+Usage or the port node is using to run the server on your local machine
 Add, edit, and delete job postings using the web interface.
 Search for jobs by keyword.
 Troubleshooting
